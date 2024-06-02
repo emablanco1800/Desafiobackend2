@@ -28,7 +28,7 @@ const httpServer = app.listen(8080, () => {
 // Configuramos socket
 export const io = new Server(httpServer);
 
-io.on("connection", async socket => {
+io.on("connection", async (socket) => {
   console.log("Nuevo usuario Conectado");
   const products = await productManager.getProducts();
   io.emit("products", products);
