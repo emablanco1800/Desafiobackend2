@@ -50,10 +50,10 @@ socket.on("products", (data) => {
     card.style.width = "18rem";
     card.innerHTML = `
       <div class="card-body">
-        <h5 class="card-title">${product.title}</h5>
+        <h5 class="card-title">Producto: ${product.title}</h5>
         <p class="card-text">ID: ${product.id}</p>
-        <p class="card-text">${product.description}</p>
-        <p class="card-text">$${product.price}</p>
+        <p class="card-text">Descripción: ${product.description}</p>
+        <p class="card-text">Precio: $${product.price}</p>
       </div>
     `;
 
