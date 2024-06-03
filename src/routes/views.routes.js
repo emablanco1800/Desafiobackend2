@@ -4,6 +4,7 @@ import { io } from "../app.js";
 
 const router = Router();
 
+//Obtener todos los productos (OBTENER /)
 router.get("/", async (req, res) => {
   try {
     const products = await productManager.getProducts();
@@ -14,6 +15,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Obtener página de productos en tiempo real (GET /realtimeproducts)
 router.get("/realtimeproducts", async (req, res) => {
   try {
     res.render("realTimeProducts");
@@ -23,6 +25,7 @@ router.get("/realtimeproducts", async (req, res) => {
   }
 });
 
+//Agregar producto (POST /productos en tiempo real)
 router.post("/realtimeproducts", async (req, res) => {
   try {
     const { title, price, description } = req.body;
@@ -37,6 +40,7 @@ router.post("/realtimeproducts", async (req, res) => {
   }
 });
 
+//Eliminar producto (BORRAR /realtimeproducts)
 router.delete("/realtimeproducts", async (req, res) => {
   try {
     const { id } = req.body;

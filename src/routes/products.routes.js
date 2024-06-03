@@ -4,6 +4,7 @@ import { checkProductData } from "../middlewares/checkProductData.middleware.js"
 
 const router = Router();
 
+// Ruta GET / (obtener todos los productos)
 router.get("/", async (req, res) => {
   try {
     const { limit } = req.query;
@@ -16,6 +17,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Ruta GET /:pid (obtener un producto por ID)
 router.get("/:pid", async (req, res) => {
   try {
     const { pid } = req.params;
@@ -29,6 +31,7 @@ router.get("/:pid", async (req, res) => {
   }
 });
 
+// Ruta DELETE /:pid (eliminar un producto)
 router.delete("/:pid", async (req, res) => {
   try {
     const { pid } = req.params;
@@ -42,6 +45,7 @@ router.delete("/:pid", async (req, res) => {
   }
 });
 
+// Ruta PUT /:pid (actualizar un producto)
 router.put("/:pid", async (req, res) => {
   try {
     const { pid } = req.params;
@@ -56,6 +60,7 @@ router.put("/:pid", async (req, res) => {
   }
 });
 
+// Ruta POST / (crear un nuevo producto)
 router.post("/", checkProductData, async (req, res) => {
   try {
     const body = req.body;
