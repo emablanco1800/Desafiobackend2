@@ -30,17 +30,27 @@ export const io = new Server(httpServer);
 
 io.on("connection", async (socket) => {
   console.log("Nuevo usuario Conectado");
+  socket.removeAllListeners("products");
   const products = await productManager.getProducts();
   io.emit("products", products);
 
 });
 
 // ===================================================================//
-// Configuracion de socket para cartManager
+// Configuracion de socket para ProducManager y cartManager juntos
 
-// io.on("connection", async socket => {
-//   console.log("Nuevo usuario Conectado");
-//   const cart = await cartManager.getCart();
-//   io.emit("cart", cart);
+// const httpServer = app.listen(8080, async () => {
+//   console.log("Servidor escuchando en el puerto 8080");
+//   const products = await productManager.getProducts();
+//   io.emit("products", products);
+
+//   const carts = await cartManager.getCarts();
+//   io.emit("carts", carts);
 // });
 
+// // Configuramos socket
+// export const io = new Server(httpServer);
+
+// io.on("connection", (socket) => {
+//   console.log("Nuevo usuario Conectado");
+// });
